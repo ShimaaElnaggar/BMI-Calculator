@@ -191,10 +191,13 @@ class _BMIViewState extends State<BMIView> {
              ),
            ),
           SizedBox(
+            height:60,
             width: double.infinity,
             child: MaterialButton(
-              color: Colors.pink,
-                onPressed: (){},
+              color: isMale? Colors.blue : Colors.pink,
+                onPressed: (){
+
+                },
               child: const Text("CALCULATE"),
             ),
           ),
