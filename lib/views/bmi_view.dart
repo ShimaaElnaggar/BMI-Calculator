@@ -70,7 +70,70 @@ class BMIView extends StatelessWidget {
                  ),
                ),
            ),
-           Expanded(child: Container(color:Colors.brown,child: const Row())),
+           Expanded(
+             child:  Padding(
+               padding: const EdgeInsets.only(left: 20,right: 20,bottom: 20),
+               child: Row(
+                 children: [
+                   Expanded(
+                     child: Container(
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(10),
+                         color: Colors.grey.withOpacity(0.2),
+                       ),
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                           const Text("AGE"),
+                            const Text("180",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           Row(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
+                               FloatingActionButton(
+                               onPressed: (){},
+                               child: const Icon(Icons.remove),),
+                               const SizedBox(width: 10,),
+                               FloatingActionButton(
+                                 onPressed: (){},
+                                 child: const Icon(Icons.add),),
+                             ],
+                           ),
+                         ],
+                       ),
+                     ),
+                   ),
+                   const SizedBox(width: 20,),
+                   Expanded(
+                     child: Container(
+                       decoration: BoxDecoration(
+                         borderRadius: BorderRadius.circular(10),
+                         color: Colors.grey.withOpacity(0.2),
+                       ),
+                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         children: [
+                           const Text("WEIGHt"),
+                           const Text("180",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           Row(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             children: [
+                               FloatingActionButton(
+                                 onPressed: (){},
+                                 child: const Icon(Icons.remove),),
+                               const SizedBox(width: 10,),
+                               FloatingActionButton(
+                                 onPressed: (){},
+                                 child: const Icon(Icons.add),),
+                             ],
+                           ),
+                         ],
+                       ),
+                     ),
+                   ),
+                 ],
+               ),
+             ),
+           ),
           SizedBox(
             width: double.infinity,
             child: MaterialButton(
