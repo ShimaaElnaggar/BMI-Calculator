@@ -15,8 +15,7 @@ class BMIView extends StatelessWidget {
             child: Text(
               "BMI CALCULATOR",
               style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.bold,
+                fontSize: 22,
               ),
             ),
           ),
@@ -36,7 +35,41 @@ class BMIView extends StatelessWidget {
                  ),
                ),
            ),
-           Expanded(child: Container(color:Colors.blue,child: const Column())),
+            Expanded(
+               child: Padding(
+                 padding: const EdgeInsets.all(20),
+                 child: Container(
+                   decoration: BoxDecoration(
+                     color: Colors.grey.withOpacity(0.2),
+                     borderRadius: BorderRadius.circular(10),
+                   ),
+                   child: Column(
+                     mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                       const Text("HEIGHT"),
+                       const Row(
+                         mainAxisAlignment: MainAxisAlignment.center,
+                         crossAxisAlignment: CrossAxisAlignment.baseline,
+                         textBaseline: TextBaseline.alphabetic,
+                         children: [
+                           Text("180",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           Text("cm"),
+                         ],
+                       ),
+                       Slider(
+                           value: 120,
+                           max: 220,
+                           min: 80,
+                           onChanged: (value){
+
+                           },
+                       ),
+
+                     ],
+                   ),
+                 ),
+               ),
+           ),
            Expanded(child: Container(color:Colors.brown,child: const Row())),
           SizedBox(
             width: double.infinity,
