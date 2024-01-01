@@ -1,4 +1,5 @@
 
+import 'package:bmi_calculator/views/bmi_result_view.dart';
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 
@@ -125,7 +126,7 @@ class _BMIViewState extends State<BMIView> {
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: [
                            const Text("AGE"),
-                             Text(age.toString(),style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                             Text(age.toString(),style: const TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            Row(
                              mainAxisAlignment: MainAxisAlignment.center,
                              children: [
@@ -161,7 +162,7 @@ class _BMIViewState extends State<BMIView> {
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: [
                            const Text("WEIGHt"),
-                           Text(weight.toString(),style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           Text(weight.toString(),style: const TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            Row(
                              mainAxisAlignment: MainAxisAlignment.center,
                              children: [
@@ -196,7 +197,7 @@ class _BMIViewState extends State<BMIView> {
             child: MaterialButton(
               color: isMale? Colors.blue : Colors.pink,
                 onPressed: (){
-
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const BMIResultView()));
                 },
               child: const Text("CALCULATE"),
             ),
