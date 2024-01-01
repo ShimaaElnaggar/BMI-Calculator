@@ -81,13 +81,13 @@ class _BMIViewState extends State<BMIView> {
                      mainAxisAlignment: MainAxisAlignment.center,
                      children: [
                        const Text("HEIGHT"),
-                       const Row(
+                        Row(
                          mainAxisAlignment: MainAxisAlignment.center,
                          crossAxisAlignment: CrossAxisAlignment.baseline,
                          textBaseline: TextBaseline.alphabetic,
                          children: [
                            Text(
-                             "180",
+                             currentValue.round().toString(),
                              style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            Text("cm"),
                          ],
