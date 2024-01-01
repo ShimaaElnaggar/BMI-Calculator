@@ -1,4 +1,6 @@
 
+import 'dart:math';
+
 import 'package:bmi_calculator/views/bmi_result_view.dart';
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +14,7 @@ class BMIView extends StatefulWidget {
 
 class _BMIViewState extends State<BMIView> {
   bool  isMale = true ;
-  double currentValue = 120 ;
+  double height = 120 ;
   int age = 10;
   int weight = 40;
   @override
@@ -90,18 +92,18 @@ class _BMIViewState extends State<BMIView> {
                          textBaseline: TextBaseline.alphabetic,
                          children: [
                            Text(
-                             currentValue.round().toString(),
+                             height.round().toString(),
                              style: const TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            const Text("cm"),
                          ],
                        ),
                        Slider(
-                           value: currentValue,
+                           value: height,
                            max: 220,
                            min: 80,
                            onChanged: (double value){
                              setState(() {
-                               currentValue = value ;
+                               height = value ;
                              });
                            },
                        ),
@@ -136,6 +138,7 @@ class _BMIViewState extends State<BMIView> {
                                    age--;
                                  });
                                },
+                                 heroTag: "age-",
                                child: const Icon(Icons.remove),),
                                const SizedBox(width: 10,),
                                FloatingActionButton(
@@ -144,6 +147,7 @@ class _BMIViewState extends State<BMIView> {
                                      age++;
                                    });
                                  },
+                                 heroTag: "age+",
                                  child: const Icon(Icons.add),),
                              ],
                            ),
@@ -172,6 +176,7 @@ class _BMIViewState extends State<BMIView> {
                                      weight--;
                                    });
                                  },
+                                 heroTag: "weight-",
                                  child: const Icon(Icons.remove),),
                                const SizedBox(width: 10,),
                                FloatingActionButton(
@@ -180,6 +185,7 @@ class _BMIViewState extends State<BMIView> {
                                      weight++;
                                    });
                                  },
+                                 heroTag: "weight+",
                                  child: const Icon(Icons.add),),
                              ],
                            ),
@@ -197,7 +203,11 @@ class _BMIViewState extends State<BMIView> {
             child: MaterialButton(
               color: isMale? Colors.blue : Colors.pink,
                 onPressed: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const BMIResultView()));
+                var result = weight / pow(height / 100 , 2);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>  BMIResultView(age: age, result: result , isMale: isMale ,  )));
                 },
               child: const Text("CALCULATE"),
             ),
