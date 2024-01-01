@@ -2,8 +2,15 @@
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
 
-class BMIView extends StatelessWidget {
-  const BMIView({super.key});
+class BMIView extends StatefulWidget {
+  const BMIView({super.key,});
+
+  @override
+  State<BMIView> createState() => _BMIViewState();
+}
+
+class _BMIViewState extends State<BMIView> {
+  bool  isMale = true ;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +30,41 @@ class BMIView extends StatelessWidget {
       ),
       body: Column(
         children: [
-           const Expanded(
+            Expanded(
                child:  Padding(
                  padding: EdgeInsets.symmetric(horizontal: 20),
                  child: Row(
                    children: [
-                     CustomContainer(text: 'MALE', image: 'assets/images/male.png',),
+                     Expanded(
+                       child: GestureDetector(
+                         onTap: (){
+                           setState(() {
+                             isMale = true;
+                           });
+                         },
+                           child: CustomContainer(
+                             text: 'MALE',
+                             image: 'assets/images/male.png',
+                             color: isMale? Colors.blue : Colors.grey.withOpacity(0.2),
+
+                           ),
+                       ),
+                     ),
                      SizedBox(width: 20,),
-                     CustomContainer(text: 'FEMALE', image: 'assets/images/female.png',),
+                     Expanded(
+                       child: GestureDetector(
+                         onTap: (){
+                           setState(() {
+                             isMale = false;
+                           });
+                         },
+                           child: CustomContainer(
+                             text: 'FEMALE',
+                             image: 'assets/images/female.png',
+                             color: !isMale ? Colors.pink : Colors.grey.withOpacity(0.2),
+                           ),
+                       ),
+                     ),
                    ],
                  ),
                ),
