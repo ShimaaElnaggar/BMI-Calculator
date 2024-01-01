@@ -11,7 +11,7 @@ class BMIView extends StatefulWidget {
 
 class _BMIViewState extends State<BMIView> {
   bool  isMale = true ;
-
+  double currentValue = 120 ;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -86,16 +86,20 @@ class _BMIViewState extends State<BMIView> {
                          crossAxisAlignment: CrossAxisAlignment.baseline,
                          textBaseline: TextBaseline.alphabetic,
                          children: [
-                           Text("180",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           Text(
+                             "180",
+                             style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            Text("cm"),
                          ],
                        ),
                        Slider(
-                           value: 120,
+                           value: currentValue,
                            max: 220,
                            min: 80,
-                           onChanged: (value){
-
+                           onChanged: (double value){
+                             setState(() {
+                               currentValue = value ;
+                             });
                            },
                        ),
 
