@@ -12,6 +12,8 @@ class BMIView extends StatefulWidget {
 class _BMIViewState extends State<BMIView> {
   bool  isMale = true ;
   double currentValue = 120 ;
+  int age = 10;
+  int weight = 40;
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
@@ -32,7 +34,7 @@ class _BMIViewState extends State<BMIView> {
         children: [
             Expanded(
                child:  Padding(
-                 padding: EdgeInsets.symmetric(horizontal: 20),
+                 padding: const EdgeInsets.symmetric(horizontal: 20),
                  child: Row(
                    children: [
                      Expanded(
@@ -50,7 +52,7 @@ class _BMIViewState extends State<BMIView> {
                            ),
                        ),
                      ),
-                     SizedBox(width: 20,),
+                     const SizedBox(width: 20,),
                      Expanded(
                        child: GestureDetector(
                          onTap: (){
@@ -88,8 +90,8 @@ class _BMIViewState extends State<BMIView> {
                          children: [
                            Text(
                              currentValue.round().toString(),
-                             style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
-                           Text("cm"),
+                             style: const TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           const Text("cm"),
                          ],
                        ),
                        Slider(
@@ -123,16 +125,24 @@ class _BMIViewState extends State<BMIView> {
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: [
                            const Text("AGE"),
-                            const Text("180",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                             Text(age.toString(),style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            Row(
                              mainAxisAlignment: MainAxisAlignment.center,
                              children: [
                                FloatingActionButton(
-                               onPressed: (){},
+                               onPressed: (){
+                                 setState(() {
+                                   age--;
+                                 });
+                               },
                                child: const Icon(Icons.remove),),
                                const SizedBox(width: 10,),
                                FloatingActionButton(
-                                 onPressed: (){},
+                                 onPressed: (){
+                                   setState(() {
+                                     age++;
+                                   });
+                                 },
                                  child: const Icon(Icons.add),),
                              ],
                            ),
@@ -151,16 +161,24 @@ class _BMIViewState extends State<BMIView> {
                          mainAxisAlignment: MainAxisAlignment.center,
                          children: [
                            const Text("WEIGHt"),
-                           const Text("180",style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
+                           Text(weight.toString(),style: TextStyle(fontWeight: FontWeight.w900,fontSize: 30),),
                            Row(
                              mainAxisAlignment: MainAxisAlignment.center,
                              children: [
                                FloatingActionButton(
-                                 onPressed: (){},
+                                 onPressed: (){
+                                   setState(() {
+                                     weight--;
+                                   });
+                                 },
                                  child: const Icon(Icons.remove),),
                                const SizedBox(width: 10,),
                                FloatingActionButton(
-                                 onPressed: (){},
+                                 onPressed: (){
+                                   setState(() {
+                                     weight++;
+                                   });
+                                 },
                                  child: const Icon(Icons.add),),
                              ],
                            ),
