@@ -1,6 +1,7 @@
 
 import 'dart:math';
 
+import 'package:bmi_calculator/constants.dart';
 import 'package:bmi_calculator/views/bmi_result_view.dart';
 import 'package:bmi_calculator/widgets/custom_container.dart';
 import 'package:flutter/material.dart';
@@ -40,36 +41,9 @@ class _BMIViewState extends State<BMIView> {
                  padding: const EdgeInsets.symmetric(horizontal: 20),
                  child: Row(
                    children: [
-                     Expanded(
-                       child: GestureDetector(
-                         onTap: (){
-                           setState(() {
-                             isMale = true;
-                           });
-                         },
-                           child: CustomContainer(
-                             text: 'MALE',
-                             image: 'assets/images/male.png',
-                             color: isMale? Colors.blue : Colors.grey.withOpacity(0.2),
-
-                           ),
-                       ),
-                     ),
+                     maleButton(),
                      const SizedBox(width: 20,),
-                     Expanded(
-                       child: GestureDetector(
-                         onTap: (){
-                           setState(() {
-                             isMale = false;
-                           });
-                         },
-                           child: CustomContainer(
-                             text: 'FEMALE',
-                             image: 'assets/images/female.png',
-                             color: !isMale ? Colors.pink : Colors.grey.withOpacity(0.2),
-                           ),
-                       ),
-                     ),
+                     femaleMethode(),
                    ],
                  ),
                ),
@@ -79,7 +53,7 @@ class _BMIViewState extends State<BMIView> {
                  padding: const EdgeInsets.all(20),
                  child: Container(
                    decoration: BoxDecoration(
-                     color: Colors.grey.withOpacity(0.2),
+                     color:kPrimaryColor,
                      borderRadius: BorderRadius.circular(10),
                    ),
                    child: Column(
@@ -122,7 +96,7 @@ class _BMIViewState extends State<BMIView> {
                      child: Container(
                        decoration: BoxDecoration(
                          borderRadius: BorderRadius.circular(10),
-                         color: Colors.grey.withOpacity(0.2),
+                         color: kPrimaryColor,
                        ),
                        child: Column(
                          mainAxisAlignment: MainAxisAlignment.center,
@@ -201,7 +175,7 @@ class _BMIViewState extends State<BMIView> {
             height:60,
             width: double.infinity,
             child: MaterialButton(
-              color: isMale? Colors.blue : Colors.pink,
+              color: isMale? kMaleColor: kFemaleColor,
                 onPressed: (){
                 var result = weight / pow(height / 100 , 2);
                 Navigator.push(
@@ -213,6 +187,41 @@ class _BMIViewState extends State<BMIView> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Expanded femaleMethode() {
+    return Expanded(
+                     child: GestureDetector(
+                       onTap: (){
+                         setState(() {
+                           isMale = false;
+                         });
+                       },
+                         child: CustomContainer(
+                           text: 'FEMALE',
+                           image: 'assets/images/female.png',
+                           color: !isMale ? kFemaleColor : kPrimaryColor,
+                         ),
+                     ),
+                   );
+  }
+
+  Expanded maleButton() {
+    return Expanded(
+      child: GestureDetector(
+        onTap: (){
+          setState(() {
+            isMale = true;
+          });
+        },
+        child: CustomContainer(
+          text: 'MALE',
+          image: 'assets/images/male.png',
+          color: isMale? kMaleColor: kPrimaryColor,
+
+        ),
       ),
     );
   }
